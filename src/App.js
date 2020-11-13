@@ -1,8 +1,7 @@
+import Login from "../src/view/login";
 
 function App() {
-  return (
-    <h1>Olá</h1>
-  );
+  return <Login></Login>;
 }
 
 export default App;
