@@ -11,11 +11,6 @@ const CreateAccount = () => {
   const [errorMessage, setErrorMessage] = useState();
   const [spinnerState, setSpinnerState] = useState();
 
-  const resetForm = () => {
-    setEmail("");
-    setPassword("");
-  };
-
   const cadastrar = () => {
     setTipoMensagem(null);
 
@@ -57,7 +52,6 @@ const CreateAccount = () => {
       })
       .finally(() => {
         setSpinnerState(false);
-        this.resetForm();
       });
   };
 
