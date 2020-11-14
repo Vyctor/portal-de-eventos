@@ -1,7 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom'; 
-import App from './App';
- 
-ReactDOM.render(<App></App>, document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import CreateAccount from "./view/create-account";
 
- 
+ReactDOM.render(
+  <CreateAccount></CreateAccount>,
+  document.getElementById("root")
+);
