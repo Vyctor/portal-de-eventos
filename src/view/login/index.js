@@ -7,17 +7,17 @@ import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [tipoMensagem, setTipoMensagem] = useState();
 
   const signIn = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((resultado) => {
-        alert("Usuário logado");
-        console.log(resultado);
+        setTipoMensagem("Sucesso");
       })
       .catch((error) => {
-        alert(error);
+        setTipoMensagem("Erro");
       });
   };
 
@@ -55,10 +55,17 @@ const Login = () => {
         </button>
 
         <div className="msg-login text-white text-center my-5">
-          <span>
-            <strong>Wow!</strong> Você está conectado! &#128526;
-            <strong>Ops!</strong> Verifique as credenciais de acesso! &#128546;
-          </span>
+          {tipoMensagem === "Sucesso" && (
+            <span>
+              <strong>Wow!</strong> Você está conectado! &#128526;
+            </span>
+          )}
+          {tipoMensagem === "Erro" && (
+            <span>
+              <strong>Ops!</strong> Verifique as credenciais de acesso!
+              &#128546;
+            </span>
+          )}
         </div>
 
         <div className="opcoes-login mt-5 text-center">
