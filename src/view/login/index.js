@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import firebase from "../../config/firebase";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "firebase/auth";
 
+// CSS
 import "./login.css";
 
 const Login = () => {
@@ -10,12 +12,17 @@ const Login = () => {
   const [password, setPassword] = useState();
   const [tipoMensagem, setTipoMensagem] = useState();
 
+  const dispatch = useDispatch();
+
   const signIn = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((resultado) => {
         setTipoMensagem("Sucesso");
+        setTimeout(() => {
+          dispatch({ type: "LOG_IN", usuarioEmail: email });
+        }, 2000);
       })
       .catch((error) => {
         setTipoMensagem("Erro");
@@ -24,6 +31,10 @@ const Login = () => {
 
   return (
     <div className="login-content d-flex align-items-center">
+      {useSelector((state) => state.usuarioLogado) > 0 ? (
+        <Redirect to="/" />
+      ) : null}
+
       <form className="form-signin mx-auto">
         <div className="text-center mb-4">
           <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold">
