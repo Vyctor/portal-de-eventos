@@ -45,7 +45,7 @@ const Navbar = () => {
           {useSelector((state) => state.usuarioLogado > 0) ? (
             <>
               <li className="nav-item">
-                <Link to="create-account" className="nav-link">
+                <Link to="evento-cadastro" className="nav-link">
                   Publicar Evento
                 </Link>
               </li>

@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import store from "../src/store/";
 import { Provider } from "react-redux";
+
 // Páginas
 import Login from "./view/login";
 import CreateAccount from "./view/create-account";
 import Home from "./view/home";
 import ResetPassword from "./view/reset-password";
+import EventoCadastro from "./view/evento-cadastro";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route exact path="/create-account" component={CreateAccount} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/reset-password" component={ResetPassword} />
+        <Route exact path="/evento-cadastro" component={EventoCadastro} />
       </Router>
     </Provider>
   );
