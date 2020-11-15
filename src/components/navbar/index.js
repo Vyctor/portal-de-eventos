@@ -55,7 +55,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link onClick={signOut} className="nav-link">
+                <Link to="" onClick={signOut} className="nav-link">
                   Sair
                 </Link>
               </li>
