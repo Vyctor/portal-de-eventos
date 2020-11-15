@@ -72,6 +72,11 @@ const Navbar = () => {
                   Login
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="reset-password" className="nav-link">
+                  Recuperar senha
+                </Link>
+              </li>
             </>
           )}
         </ul>
