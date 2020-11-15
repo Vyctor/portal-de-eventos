@@ -37,6 +37,7 @@ const Login = () => {
 
       <form className="form-signin mx-auto">
         <div className="text-center mb-4">
+          <i className="far fa-smile-wink text-white fa-7x"></i>
           <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold">
             Login
           </h1>
@@ -81,7 +82,7 @@ const Login = () => {
         </div>
 
         <div className="opcoes-login mt-5 text-center">
-          <Link to="create-account" className="mx-2">
+          <Link to="reset-password" className="mx-2">
             Recuperar senha
           </Link>
           <span className="text-white">&#9733;</span>
