@@ -22,6 +22,7 @@ const EventoDetalhes = (props) => {
       .get()
       .then((doc) => {
         setEvento(doc.data());
+        doc.ref.update({ visualizacoes: doc.data().visualizacoes + 1 });
         firebase
           .storage()
           .ref(doc.data().foto)
@@ -64,7 +65,7 @@ const EventoDetalhes = (props) => {
                 />
                 <div className="col-12 text-right visualizacoes">
                   <i className="fa fa-eye pr-2"></i>
-                  <span>{evento.visualizacoes}</span>
+                  <span>{evento.visualizacoes + 1}</span>
                 </div>
                 <h3 className="mx-auto titulo"> {evento.titulo}</h3>
               </div>
