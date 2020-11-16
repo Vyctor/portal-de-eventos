@@ -16,7 +16,7 @@ const EventoCadastro = (props) => {
 
   const [tipoMensagem, setTipoMensagem] = useState();
   const [titulo, setTitulo] = useState();
-  const [tipo, setTipo] = useState();
+  const [tipo, setTipo] = useState("Teatro");
   const [detalhes, setDetalhes] = useState();
   const [data, setData] = useState();
   const [fotoAtual, setFotoAtual] = useState();
@@ -66,6 +66,7 @@ const EventoCadastro = (props) => {
       .put(fotoNova)
       .then(async (result) => {
         const doc = db.collection("eventos").doc();
+
         await doc
           .set({
             id: doc.id,
@@ -152,11 +153,11 @@ const EventoCadastro = (props) => {
             </div>
 
             <div className="form-group">
-              <label>Tipo do evento:</label>
+              <label> do evento:</label>
               <select
                 onChange={(event) => setTipo(event.target.value)}
                 className="form-control"
-                value={tipo && tipo}
+                value={idEditando ? tipo && tipo : null}
               >
                 <option value="Festa">Festa</option>
                 <option value="Teatro">Teatro</option>
