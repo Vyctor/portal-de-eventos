@@ -19,6 +19,7 @@ const Navbar = () => {
         alert(error.message);
       });
   };
+
   const dispatch = useDispatch();
 
   return (
@@ -45,17 +46,17 @@ const Navbar = () => {
           {useSelector((state) => state.usuarioLogado > 0) ? (
             <>
               <li className="nav-item">
-                <Link to="evento-cadastro" className="nav-link">
+                <Link to="/evento-cadastro" className="nav-link">
                   Publicar Evento
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="create-account" className="nav-link">
+                <Link to="/eventos/meus-eventos" className="nav-link">
                   Meus eventos
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="" onClick={signOut} className="nav-link">
+                <Link to="/login" onClick={signOut} className="nav-link">
                   Sair
                 </Link>
               </li>
@@ -63,17 +64,17 @@ const Navbar = () => {
           ) : (
             <>
               <li className="nav-item">
-                <Link to="create-account" className="nav-link">
+                <Link to="/create-account" className="nav-link">
                   Cadastrar
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="login" className="nav-link">
+                <Link to="/login" className="nav-link">
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="reset-password" className="nav-link">
+                <Link to="/reset-password" className="nav-link">
                   Recuperar senha
                 </Link>
               </li>

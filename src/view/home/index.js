@@ -8,15 +8,16 @@ import firebase from "../../config/firebase";
 import Navbar from "../../components/navbar";
 import EventoCard from "../../components/evento-card";
 
-const Home = () => {
+const Home = ({ match }) => {
   const [eventos, setEventos] = useState({});
   const [pesquisa, setPesquisa] = useState("");
+  const usuarioEmail = useSelector((state) => state.usuarioEmail);
 
   useEffect(() => {
     let listaEventos = [];
 
     // criar função assíncrona
-    async function carregaEventos() {
+    async function carregaTodosEventos() {
       await firebase
         .firestore()
         .collection("eventos")
@@ -31,14 +32,35 @@ const Home = () => {
         });
     }
 
-    carregaEventos();
-  }, [pesquisa]);
+    async function carregaMeusEventos() {
+      await firebase
+        .firestore()
+        .collection("eventos")
+        .where("usuarioEmail", "==", usuarioEmail)
+        .get()
+        .then(async (data) => {
+          await data.forEach((doc) => {
+            if (doc.data().titulo.indexOf(pesquisa) >= 0) {
+              listaEventos.push({ id: doc.id, ...doc.data() });
+            }
+          });
+          setEventos(listaEventos);
+        });
+    }
+
+    if (match.params.parametro) {
+      carregaMeusEventos();
+    } else {
+      carregaTodosEventos();
+    }
+  }, [match.params.parametro, pesquisa, usuarioEmail]);
 
   return (
     <>
       <Navbar></Navbar>
 
       <div className="row p-5 mx-auto col-6">
+        <h2 className="text-center mx-auto pb-4">Eventos</h2>
         <input
           type="text"
           className="form-control input-pesquisa text-center"
