@@ -1,5 +1,6 @@
 .container-fluid {
   padding: 0;
+  overflow-y: hidden;
 }
 
 .img-banner {
@@ -13,13 +14,6 @@
   color: #fff;
 }
 
-.box-detalhes {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-}
-
 .btn-editar i {
   position: fixed;
   bottom: 10px;
@@ -29,5 +23,10 @@
 }
 
 .btn-editar i:hover {
+  color: #614ea6;
+}
+
+.titulo,
+.visualizacoes {
   color: #614ea6;
 }

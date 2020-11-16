@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import firebase from "../../config/firebase";
 
@@ -11,6 +11,8 @@ import Navbar from "../../components/navbar";
 // Estado
 
 const EventoCadastro = () => {
+  const history = useHistory();
+
   const [tipoMensagem, setTipoMensagem] = useState();
   const [titulo, setTitulo] = useState();
   const [tipo, setTipo] = useState();
@@ -24,19 +26,17 @@ const EventoCadastro = () => {
   const storage = firebase.storage();
   const db = firebase.firestore();
 
-  const cadastrarEvento = () => {
+  const cadastrarEvento = async () => {
     setTipoMensagem(null);
     setLoading(true);
 
-    storage
+    await storage
       .ref(`imagens/${foto.name}`)
       .put(foto)
-      .then((result) => {
-        const doc = db.collection("eventos").doc();
-
-        doc
-          .set({
-            id: doc.id,
+      .then(async (result) => {
+        await db
+          .collection("eventos")
+          .add({
             titulo: titulo,
             tipo: tipo,
             detalhes: detalhes,
@@ -55,6 +55,7 @@ const EventoCadastro = () => {
           })
           .finally(() => {
             setLoading(false);
+            history.push("/");
           });
       });
   };

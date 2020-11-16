@@ -34,7 +34,7 @@ const EventoCard = ({ id, img, titulo, detalhes, visualizacoes }) => {
         <div className="row rodape-card d-flex align-items-center">
           <div className="col-6">
             <Link
-              to={`evento-detalhes/${id}`}
+              to={`/evento-detalhes/${id}`}
               className="btn btn-sm btn-detalhes"
             >
               + detalhes
