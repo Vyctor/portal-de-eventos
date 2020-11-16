@@ -9,6 +9,7 @@ import CreateAccount from "./view/create-account";
 import Home from "./view/home";
 import ResetPassword from "./view/reset-password";
 import EventoCadastro from "./view/evento-cadastro";
+import EventoDetalhes from "./view/evento-detalhes";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/evento-cadastro" component={EventoCadastro} />
+        <Route exact path="/evento-detalhes" component={EventoDetalhes} />
       </Router>
     </Provider>
   );
