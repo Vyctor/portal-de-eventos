@@ -10,6 +10,7 @@ import EventoCard from "../../components/evento-card";
 
 const Home = () => {
   const [eventos, setEventos] = useState({});
+  const [pesquisa, setPesquisa] = useState("");
 
   useEffect(() => {
     let listaEventos = [];
@@ -22,20 +23,33 @@ const Home = () => {
         .get()
         .then(async (data) => {
           await data.forEach((doc) => {
-            listaEventos.push({ id: doc.id, ...doc.data() });
+            if (doc.data().titulo.indexOf(pesquisa) >= 0) {
+              listaEventos.push({ id: doc.id, ...doc.data() });
+            }
           });
           setEventos(listaEventos);
         });
     }
 
     carregaEventos();
-  }, []);
+  }, [pesquisa]);
 
   return (
     <>
       <Navbar></Navbar>
 
-      <div className="row p-3">
+      <div className="row p-5 mx-auto col-6">
+        <input
+          type="text"
+          className="form-control input-pesquisa text-center"
+          placeholder="Pesquise o evento pelo título..."
+          onChange={(event) => {
+            setPesquisa(event.target.value);
+          }}
+        />
+      </div>
+
+      <div className="row m-3">
         {eventos.length > 0
           ? eventos.map((evento) => (
               <EventoCard

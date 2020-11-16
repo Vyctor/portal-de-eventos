@@ -18,7 +18,7 @@ const EventoCard = ({ id, img, titulo, detalhes, visualizacoes }) => {
         });
     }
     getImagemEvento();
-  }, [img]);
+  }, [img, urlImagem]);
 
   return (
     <div className="col-md-3 col-sm-12">
@@ -43,7 +43,7 @@ const EventoCard = ({ id, img, titulo, detalhes, visualizacoes }) => {
 
           <div className="col-6 text-right">
             <i className="fas fa-eye">
-              <span className="pl-2">{visualizacoes}</span>
+              <span className="ml-2">{visualizacoes}</span>
             </i>
           </div>
         </div>
