@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import store from "../src/store/";
+import { store, persistor } from "../src/store/";
+import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 
 // Páginas
@@ -14,6 +15,7 @@ import EventoDetalhes from "./view/evento-detalhes";
 function App() {
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor} />
       <Router>
         <Route exact path="/" component={Home} />
         <Route path="/eventos/:parametro" component={Home} />
