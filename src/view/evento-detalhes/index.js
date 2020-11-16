@@ -25,7 +25,7 @@ const EventoDetalhes = (props) => {
         doc.ref.update({ visualizacoes: doc.data().visualizacoes + 1 });
         firebase
           .storage()
-          .ref(doc.data().foto)
+          .ref(`imagens/${doc.data().foto}`)
           .getDownloadURL()
           .then((url) => setImagemUrl(url));
       })
@@ -35,8 +35,6 @@ const EventoDetalhes = (props) => {
         }, 1000);
       });
   }, [props.match.params.id]);
-
-  console.log("Evento: ", evento);
 
   return (
     <>
@@ -100,7 +98,10 @@ const EventoDetalhes = (props) => {
               </div>
 
               {usuarioLogado === evento.usuarioEmail ? (
-                <Link to="/" className="btn-editar">
+                <Link
+                  to={`/editar-evento/${props.match.params.id}`}
+                  className="btn-editar"
+                >
                   <i className="fas fa-pen-square fa-3x"></i>
                 </Link>
               ) : null}

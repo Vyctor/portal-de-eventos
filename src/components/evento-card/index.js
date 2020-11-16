@@ -11,7 +11,7 @@ const EventoCard = ({ id, img, titulo, detalhes, visualizacoes }) => {
     async function getImagemEvento() {
       await firebase
         .storage()
-        .ref(img)
+        .ref(`imagens/${img}`)
         .getDownloadURL()
         .then((url) => {
           setUrlImagem(url);
