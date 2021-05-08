@@ -5,6 +5,7 @@ src/config/firebase.js
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
